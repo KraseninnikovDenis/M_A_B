@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .models import EventsDB
 
 def home(request):
-    return render(request,'events/home.html')
+    events=EventsDB.objects
+    return render(request,'events/home.html', {'events':events})
