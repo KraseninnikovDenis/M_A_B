@@ -7,6 +7,9 @@ class Post (models.Model):
     text=models.TextField(verbose_name='текст поста')
     image=models.ImageField(upload_to='image_event/', verbose_name='картинка')
 
+    def __str__(self):
+        return self.title
+
     def brief_text(self):
         return self.text[:30] + ' ...'
     

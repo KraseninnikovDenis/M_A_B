@@ -2,13 +2,14 @@
 
 <!doctype html>
 <html lang="en">
+  {% load static %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Album example · Bootstrap v5.1</title>
+    <title>My awesome blog</title>
 
     <script type="text/javascript" nonce="d296f34f92444d97951bd386980" src="//local.adguard.org?ts=1634147600308&amp;type=content-script&amp;dmn=getbootstrap.com&amp;app=opera.exe&amp;css=1&amp;js=1&amp;gcss=1&amp;rel=1&amp;rji=1&amp;sbe=0"></script>
 <script type="text/javascript" nonce="d296f34f92444d97951bd386980" src="//local.adguard.org?ts=1634147600308&amp;name=AdGuard%20Popup%20Blocker&amp;name=AdGuard%20Assistant&amp;name=AdGuard%20Extra&amp;type=user-script"></script><link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/album/">
@@ -50,14 +51,14 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">My Awesome blog</a>
+      <a class="navbar-brand" href="{% url 'home' %}">My Awesome blog</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" href="#">About me</a>
-          <a class="nav-link active" href="#">Blog</a>
+          <a class="nav-link" href="{% static 'hi.txt' %}">About me</a>
+          <a class="nav-link active" href="{% url 'showeblog' %}">Blog</a>
         </div>
       </div>
     </div>
@@ -69,10 +70,9 @@
   <h1 class= "pt-5"> последние посты </h1>
 
   {% for post in posts.all %}
-    <a href=""> <h2> {{ post.title }} </h2> </a>
+    <a href="{% url 'specific' post.id %}"> <h2> {{ post.title }} </h2> </a>
     <br/>
     <img src="{{ post.image.url }}" height=300 width=300 class="img-fluid">
-    <p> {{ post.date }}</p>
     <p> {{ post.brief_text }}</p>
     <br/>
     <br/>
