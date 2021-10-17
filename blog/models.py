@@ -6,6 +6,9 @@ class Post (models.Model):
     date=models.DateField(auto_now_add=True, verbose_name='дата')
     text=models.TextField(verbose_name='текст поста')
     image=models.ImageField(upload_to='image_event/', verbose_name='картинка')
+
+    def brief_text(self):
+        return self.text[:30] + ' ...'
     
     class Meta:
         verbose_name_plural='посты'
